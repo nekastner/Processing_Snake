@@ -27,8 +27,8 @@ class Grid {
         }
     }
 
-    public void set(short x, short y, color c) {
+    public void set(Coord coord, color c) {
 
-        this.cells[x][y] = c;
+        this.cells[coord.x][coord.y] = c;
     }
 }

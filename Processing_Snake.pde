@@ -1,4 +1,5 @@
 Grid grid = new Grid();
+Snake snake = new Snake(new Coord((short) 0, (short) 0));
 
 void setup() {
 
