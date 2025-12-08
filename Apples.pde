@@ -1,18 +1,23 @@
 class Apples {
 
-    public short gridWidth;
-    public short gridHeight;
+    public int gridWidth;
+    public int gridHeight;
     public color appleColor = color(0, 255, 0);
 
     public ArrayList<Coord> apples = new ArrayList<Coord>();
 
-    public Apples(short gridWidth, short gridHeight) {
+    public Apples(int gridWidth, int gridHeight) {
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
     }
 
     public void spawnApple() {
-        apples.add(new Coord((short) random(0, this.gridWidth), (short) random(0, this.gridHeight)));
+        apples.add(
+            new Coord(
+                (int) random(0, this.gridWidth),
+                (int) random(0, this.gridHeight)
+            )
+        );
     }
 
     public void dispawnApple(Coord coord) {

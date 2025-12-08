@@ -1,8 +1,8 @@
 class Coord {
-    public short x;
-    public short y;
+    public int x;
+    public int y;
 
-    public Coord(short x, short y) {
+    public Coord(int x, int y) {
         this.x = x;
         this.y = y;
     }

@@ -1,8 +1,9 @@
 class Grid {
 
-    public short diameter = 30;
-    public short width = 17;
-    public short height = 15;
+    public int diameter = 30;
+    public int width = 17;
+    public int height = 15;
+    public color backgroundColor = color(0, 0, 0);
 
     public color[][] cells = new color[width][height];
 
@@ -11,18 +12,23 @@ class Grid {
         // set all cells to black
         for (int i = 0; i < this.width; i++) {
             for (int j = 0; j < this.height; j++) {
-                cells[i][j] = color(0, 0, 0);
+                cells[i][j] = backgroundColor;
             }
         }
     }
 
     public void draw() {
 
-        for (int i = 0; i < this.width; i++) {
-            for (int j = 0; j < this.height; j++) {
+        for (int x = 0; x < this.width; x++) {
+            for (int y = 0; y < this.height; y++) {
                 stroke(255);
-                fill(cells[i][j]);
-                rect(i*diameter, j*diameter, diameter, diameter);
+                fill(cells[x][y]);
+                rect(
+                    x * diameter,
+                    y * diameter,
+                    diameter,
+                    diameter
+                );
             }
         }
     }
@@ -30,5 +36,14 @@ class Grid {
     public void set(Coord coord, color c) {
 
         this.cells[coord.x][coord.y] = c;
+    }
+
+    public void reset() {
+
+        for (int x = 0; x < this.width; x++) {
+            for (int y = 0; y < this.height; y++) {
+                cells[x][y] = backgroundColor;
+            }
+        }
     }
 }

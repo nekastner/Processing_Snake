@@ -1,6 +1,7 @@
 class SnakePart {
   Coord coord;
   SnakePart next;
+  SnakePart previous;
 
   SnakePart(Coord coord) {
     this.coord = coord;
@@ -15,34 +16,40 @@ enum Direction {
 }
 
 class Snake {
-
     public SnakePart head;
+    public SnakePart tail;
     public color snakeColor = color(255, 0, 0);
     public Direction direction = Direction.RIGHT;
 
     public Snake(Coord coord) {
+
         head = new SnakePart(coord);
+        head.previous = null;
         head.next = null;
+
+        tail = head;
     }
 
     public void grow() {
 
-        SnakePart last = head;
-        while (last.next != null) {
-            last = last.next;
-        }
-
-        last.next = new SnakePart(last.coord);
-        last.next.next = null;
+        // TODO: später richtig implementieren
+        tail.next = new SnakePart(
+            new Coord(
+                2 * tail.coord.x - tail.previous.coord.x,
+                2 * tail.coord.y - tail.previous.coord.y
+            )
+        );
+        tail.next.previous = tail;
+        tail.next.next = null;
+        tail = tail.next;
     }
 
-    public short length() {
+    public int length() {
 
-        short len = 1;
+        int len = 1;
 
         SnakePart current = head;
-
-        while (current != null) {
+        while (current.next != null) {
             len++;
             current = current.next;
         }
@@ -52,44 +59,40 @@ class Snake {
 
     public void move() {
 
-        SnakePart head_old = this.head;
+        Coord coord = head.coord;
 
-        Coord coord = new Coord((short) 0, (short) 0);
+        switch (direction) {
 
-        switch (this.direction) {
             case RIGHT:
-                coord.y = (short) (head_old.coord.x + 1);
+                coord.x++;
                 break;
+
             case DOWN:
-                coord.x = (short) (head_old.coord.y + 1);
+                coord.y++;
                 break;
+
             case LEFT:
-                coord.x = (short) (head_old.coord.x - 1);
+                coord.x--;
                 break;
+
             case UP:
-                coord.y = (short) (head_old.coord.y - 1);
+                coord.y--;
                 break;
-            default:
-                println("error: invalid snake direction");
-                return;
         }
 
-        SnakePart head_new = new SnakePart(coord);
-        head_new.next = head_old;
-        this.head = head_new;
-
-        SnakePart current = head;
-        while (current.next != null) {
-            current.coord = current.next.coord;
-            current = current.next;
+        SnakePart current = tail;
+        while (current.previous != null) {
+            current.coord = current.previous.coord;
+            current = current.previous;
         }
+        head.coord = coord;
     }
 
     public void draw(Grid grid) {
 
-        SnakePart current = head;
-        while(current.next != null) {
-            grid.set(current.coord, this.snakeColor);
+        SnakePart current = snake.head;
+        while(current != null) {
+            grid.set(current.coord, snake.snakeColor);
             current = current.next;
         }
     }
