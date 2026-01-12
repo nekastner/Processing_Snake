@@ -9,8 +9,8 @@ class Grid {
 
     public Grid() {
         // set all cells to black
-        for (int i = 0; i < this.width; i++) {
-            for (int j = 0; j < this.height; j++) {
+        for (int i = 0; i < width; i++) {
+            for (int j = 0; j < height; j++) {
                 cells[i][j] = backgroundColor;
             }
         }
@@ -33,25 +33,25 @@ class Grid {
     }
 
     public void draw() {
-        for (int x = 0; x < this.width; x++) {
-            for (int y = 0; y < this.height; y++) {
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
                 stroke(255);
-                fill(this.cells[x][y]);
-                rect(x * this.diameter, y * this.diameter, this.diameter, this.diameter);
+                fill(cells[x][y]);
+                rect(x * diameter, y * diameter, diameter, diameter);
             }
         }
     }
 
     public Boolean set(Coord coord, color c) {
-        if (coord.x < 0 || coord.x >= this.width || coord.y < 0 || coord.y >= this.height) { return false; }
-        this.cells[coord.x][coord.y] = c;
+        if (coord.x < 0 || coord.x >= width || coord.y < 0 || coord.y >= height) { return false; }
+        cells[coord.x][coord.y] = c;
         return true;
     }
 
     public void reset() {
-        for (int x = 0; x < this.width; x++) {
-            for (int y = 0; y < this.height; y++) {
-                this.cells[x][y] = this.backgroundColor;
+        for (int x = 0; x < width; x++) {
+            for (int y = 0; y < height; y++) {
+                cells[x][y] = backgroundColor;
             }
         }
     }
