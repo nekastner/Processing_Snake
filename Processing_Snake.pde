@@ -28,17 +28,11 @@ void setup() {
     grid.height = 15;
     grid.diameter = 30;
 
-    // let grow snake before game start for testing
-    for (int i = 0; i < 2; i++) {
-        snake.grow();
-    }
-
-    // TODO: spawn apples in draw, not setup
-    // spawn first apple
-    apples.spawnApple();
-
     // auto-focus window on startup
     focused = true;
+
+    // spawn first apple
+    apples.spawnApple();
 }
 
 void draw() {
@@ -59,33 +53,48 @@ void draw() {
         println("You lost! Final length: " + snake.length());
         noLoop();
     }
+    // check if snake ate an apple
+    for (Coord apple : apples.apples) {
+        if (snake.head.coord.x == apple.x &&
+            snake.head.coord.y == apple.y) {
+            // grow snake
+            snake.grow();
+            // dispawn apple
+            apples.dispawnApple(apple);
+            // spawn new apple
+            apples.spawnApple();
+            break; // prevent concurrent modification error
+        }
+    }
 
     // set every component in the grid and draw it
     apples.draw(grid);
     snake.draw(grid);
     grid.draw();
-    
 }
 
 void keyPressed() {
-    // TODO: prevent user from 180 degrees turn (instant suicide)
 
     // arrow keys
     switch (keyCode) {
 
         case RIGHT:
+            if (snake.direction == Direction.LEFT) { return; }
             snake.direction = Direction.RIGHT;
             break;
 
         case DOWN:
+            if (snake.direction == Direction.UP) { return; }
             snake.direction = Direction.DOWN;
             break;
 
         case LEFT:
+            if (snake.direction == Direction.RIGHT) { return; }
             snake.direction = Direction.LEFT;
             break;
 
         case UP:
+            if (snake.direction == Direction.DOWN) { return; }
             snake.direction = Direction.UP;
             break;
     }
@@ -95,21 +104,25 @@ void keyPressed() {
 
         case 'd':
         case 'D':
+            if (snake.direction == Direction.LEFT) { return; }
             snake.direction = Direction.RIGHT;
             break;
 
         case 's':
         case 'S':
+            if (snake.direction == Direction.UP) { return; }
             snake.direction = Direction.DOWN;
             break;
 
         case 'a':
         case 'A':
+            if (snake.direction == Direction.RIGHT) { return; }
             snake.direction = Direction.LEFT;
             break;
 
         case 'w':
         case 'W':
+            if (snake.direction == Direction.DOWN) { return; }
             snake.direction = Direction.UP;
             break;
     }
