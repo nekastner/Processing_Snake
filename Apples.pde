@@ -35,4 +35,11 @@ class Apples {
     public void dispawnApple(Coord coord) {
         apples.remove(coord);
     }
+
+    // draws every apple into cells
+    public void draw(Grid grid) {
+        for (Coord apple : apples) {
+            grid.set(apple, appleColor);
+        }
+    }
 }

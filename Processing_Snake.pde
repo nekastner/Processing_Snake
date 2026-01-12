@@ -61,8 +61,8 @@ void draw() {
     }
 
     // set every component in the grid and draw it
-    grid.draw_apples(apples);
-    grid.draw_snake(snake);
+    apples.draw(grid);
+    snake.draw(grid);
     grid.draw();
     
 }

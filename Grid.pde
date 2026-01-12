@@ -20,24 +20,6 @@ class Grid {
         }
     }
 
-    // draws every apple into cells
-    public void draw_apples(Apples apples) {
-        for (Coord apple : apples.apples) {
-            grid.set(apple, apples.appleColor);
-        }
-    }
-
-    // draws the snake into cells
-    public void draw_snake(Snake snake) {
-        SnakePart current = snake.head;
-        grid.set(current.coord, snake.snakeHeadColor);
-        current = current.next;
-        while(current != null) {
-            grid.set(current.coord, snake.snakeBodyColor);
-            current = current.next;
-        }
-    }
-
     // draws the cells into the windows
     public void draw() {
         for (int x = 0; x < width; x++) {

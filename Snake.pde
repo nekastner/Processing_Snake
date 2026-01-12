@@ -122,4 +122,15 @@ class Snake {
 
         return false;
     }
+
+    // draw into grid
+    public void draw(Grid grid) {
+        SnakePart current = head;
+        grid.set(current.coord, snakeHeadColor);
+        current = current.next;
+        while(current != null) {
+            grid.set(current.coord, snakeBodyColor);
+            current = current.next;
+        }
+    }
 }
