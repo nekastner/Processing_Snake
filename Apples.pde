@@ -1,20 +1,28 @@
+// spawned and manages the apples
 class Apples {
 
+    // grid info
     public int gridWidth;
     public int gridHeight;
     public color appleColor = color(0, 255, 0);
 
+    // list of coords of all apples
     public ArrayList<Coord> apples = new ArrayList<Coord>();
 
+    // initialize with specific grid size
     public Apples(int gridWidth, int gridHeight) {
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
     }
 
-    public void spawnApple() {
+    // get amount of apples currently existing
+    public int amountApples() {
+        return apples.size();
+    }
 
-        // TODO: checken ob feld frei (keine schlange, kein apfel)
-        
+    // spawn a new apple
+    public void spawnApple() {
+        // TODO: check if filed is free (no snake, no apples)
         apples.add(
             new Coord(
                 (int) random(0, this.gridWidth),
@@ -23,6 +31,7 @@ class Apples {
         );
     }
 
+    // delete apple
     public void dispawnApple(Coord coord) {
         apples.remove(coord);
     }
