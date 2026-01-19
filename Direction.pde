@@ -1,7 +1,7 @@
 // possible directions of the snake
 enum Direction {
   UP,
-  RIGHT,
+  LEFT,
   DOWN,
-  LEFT
+  RIGHT
 }

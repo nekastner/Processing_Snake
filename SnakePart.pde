@@ -4,7 +4,7 @@
  */
 class SnakePart {
 
-  Coord coord; // postition of this part only
+Coord coord; // postition of this part only
   
   SnakePart next; // neighboured part in direction tail
   SnakePart previous; // neighboured part in direction head

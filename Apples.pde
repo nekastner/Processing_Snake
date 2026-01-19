@@ -22,7 +22,7 @@ class Apples {
 
     // spawn a new apple
     public void spawnApple() {
-        // TODO: check if filed is free (no snake, no apples)
+        // TODO: check if field is free (no snake, no apples)
         apples.add(
             new Coord(
                 (int) random(0, this.gridWidth),

@@ -78,27 +78,20 @@ class Snake {
 
     public void move() {
 
-        // TODO: kollisionen checken (wände, äpfel, sich selbst)
-
-        // copy head position (with reference not possible, position must not change during calculation)
-        Coord head_coord_new = head.coord.copy();
-
-        // calculate new head position
-        switch (direction) {
-            case RIGHT: head_coord_new.x++; break;
-            case DOWN:  head_coord_new.y++; break;
-            case LEFT:  head_coord_new.x--; break;
-            case UP:    head_coord_new.y--; break;
-        }
-
-        // shift every part (starting at the tail) into the position of the neighbour (in direction head)
+        // move last part (tail) into previous and so on
+        Coord head_coord = head.coord.copy(); // coords get coppied by reference, which is problematic for the head (only)
         SnakePart current = tail;
         while (current.previous != null) {
             current.coord = current.previous.coord;
             current = current.previous;
         }
-        // now set new head position (else there would be a gap between part 2 and 3)
-        head.coord = head_coord_new;
+        switch (direction) {
+            case RIGHT: head_coord.x++; break;
+            case DOWN:  head_coord.y++; break;
+            case LEFT:  head_coord.x--; break;
+            case UP:    head_coord.y--; break;
+        }
+        head.coord = head_coord;
     }
 
     // checks whether the snake left the grid or not
@@ -134,3 +127,5 @@ class Snake {
         }
     }
 }
+
+// keyPressed in Controls.pde
