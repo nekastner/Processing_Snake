@@ -14,4 +14,3 @@ class Coord {
         return new Coord(x, y);
     }
 }
-//
