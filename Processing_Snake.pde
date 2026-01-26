@@ -8,6 +8,7 @@ Apples apples;
 int frame_clk;
 int frame_time;
 Boolean frame_input_given;
+Boolean frame_paused = false;
 
 // window configs
 final int width = 17*30+2; // +2 because of rect bordersd
