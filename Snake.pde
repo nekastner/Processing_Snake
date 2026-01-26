@@ -127,5 +127,3 @@ class Snake {
         }
     }
 }
-
-// keyPressed in Controls.pde
