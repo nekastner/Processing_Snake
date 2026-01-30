@@ -1,6 +1,5 @@
 // possible directions of the snake
 enum Direction {
-<<<<<<< HEAD
     UP(false),
     LEFT(true),
     DOWN(false),
@@ -17,10 +16,3 @@ enum Direction {
         return this.loc == otherDirection.loc;
     }
 }
-=======
-  UP,
-  LEFT,
-  DOWN,
-  RIGHT
-}
->>>>>>> 4887c546f6664abb1551aebc36730ace06f0dc77
