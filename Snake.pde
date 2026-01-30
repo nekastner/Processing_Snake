@@ -1,22 +1,41 @@
 // contains references to snake parts and functions for control
 class Snake {
 
+    // settings
+    public Coord spawnPosition = new Coord(1, 1);
+    public Direction spawnDirection = Direction.RIGHT;
+
     // snake parts references
     public SnakePart head;
     public SnakePart tail;
 
-    // colors aof different types of snake parts
+    // colors of different types of snake parts
     public color snakeHeadColor = color(255, 150, 150);
     public color snakeBodyColor = color(255, 0, 0);
 
     // direction of snake
     public Direction direction;
 
-    // initialize snake with specific position and direction
-    public Snake(Coord coord, Direction direction) {
+    // initialize snake with optional parameters
+    public Snake(Coord spawnPosition, Direction spawnDirection) {
+        if (spawnPosition != null) { this.spawnPosition = spawnPosition; }
+        if (spawnDirection != null) { this.spawnDirection = spawnDirection; }
+        setup();
+    }
+    public Snake(Coord spawnPosition) {
+        this(spawnPosition, null);
+    }
+    public Snake(Direction spawnDirection) {
+        this(null, spawnDirection);
+    }
+    public Snake() {
+        this(null, null);
+    }
+
+    public void setup() {
 
         // create new head
-        head = new SnakePart(coord);
+        head = new SnakePart(spawnPosition);
         head.previous = null;
         head.next = null;
 
@@ -24,7 +43,7 @@ class Snake {
         tail = head;
 
         // save direction
-        this.direction = direction;
+        direction = spawnDirection;
     }
 
     // let's the snake grow

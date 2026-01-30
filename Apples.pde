@@ -1,6 +1,9 @@
 // spawned and manages the apples
 class Apples {
 
+    // settings
+    public int applesMax = 1;
+
     // grid info
     public int gridWidth;
     public int gridHeight;

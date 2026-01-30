@@ -3,10 +3,19 @@ void keyPressed() {
     switch (game_state) {
 
         case STARTMENU:
-            break;
-
+        case PAUSEMENU:
+            if (key == ' ') {
+                game_state = GameState.INGAME;
+                frame_clk = millis();
+                return;
+            }
+            
         case INGAME:
-            if (frame_input_given) { return; }
+            if (key == ' ') {
+                game_state = GameState.PAUSEMENU;
+                return;
+            }
+            if (frame_input_given) { return; } // only one input per frame
             if (key == 'w' || key == 'W' || keyCode == UP) {
                 if (snake.direction.isSameLoc(Direction.UP)) { return; }
                 snake.direction = Direction.UP;
@@ -30,9 +39,11 @@ void keyPressed() {
             break;
 
         case GAMEOVER:
-            break;
-
-        case PAUSEMENU:
-            break;
+            if (key == ' ') {
+                game_state = GameState.INGAME;
+                snake.setup(); // reset snake
+                frame_clk = millis();
+                return;
+            }
     }
 }

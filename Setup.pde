@@ -1,32 +1,23 @@
 void setup() {
 
-    // define game components
-    grid = new Grid();
-    snake = new Snake(new Coord(1, 1), Direction.RIGHT);
-    apples = new Apples(grid.width, grid.height);
-
-    // define frame time variables
-    frame_clk = millis();
-    frame_time = 120;
-    frame_input_given = false;
-
-    // TODO: use variables for game dimensions
-    final int width = 17*30+2;
-
-    // set size of window
-    size(width, 15*30); // x-axis + 2, else border invisible
-
     // set size of grid
-    grid.width = 17;
-    grid.height = 15;
-    grid.diameter = 30;
+    grid = new Grid();
+    grid.width = horizontal_fields;
+    grid.height = vertical_fields;
+    grid.diameter = fields_diameter;
+
+    // define game components
+    snake = new Snake();
+    apples = new Apples(grid.width, grid.height);
 
     // auto-focus window on startup
     focused = true;
 
     // set game state
-    game_state = GameState.INGAME;
+    game_state = GameState.STARTMENU;
+}
 
-    // spawn first apple
-    apples.spawnApple();
+void settings() {
+    
+    size(horizontal_fields*fields_diameter+2, vertical_fields*fields_diameter+2); // +2, else borders of game are out of window
 }
