@@ -2,5 +2,5 @@ enum GameState {
     STARTMENU,
     INGAME,
     GAMEOVER,
-    PAUSEMENU    
+    PAUSEMENU;
 }
