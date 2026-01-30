@@ -4,13 +4,13 @@
  */
 class SnakePart {
 
-Coord coord; // postition of this part only
-  
-  SnakePart next; // neighboured part in direction tail
-  SnakePart previous; // neighboured part in direction head
+    Coord coord; // postition of this part only
 
-  // initialize with specific coord
-  SnakePart(Coord coord) {
-    this.coord = coord;
-  }
+    SnakePart next; // neighboured part in direction tail
+    SnakePart previous; // neighboured part in direction head
+
+    // initialize with specific coord
+    SnakePart(Coord coord) {
+        this.coord = coord;
+    }
 }
