@@ -11,9 +11,10 @@ void setup() {
     frame_input_given = false;
 
     // TODO: use variables for game dimensions
+    final int width = 17*30+2;
 
     // set size of window
-    size(17*30+2, 15*30); // x-axis + 2, else border invisible
+    size(width, 15*30); // x-axis + 2, else border invisible
 
     // set size of grid
     grid.width = 17;
