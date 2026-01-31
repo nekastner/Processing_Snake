@@ -1,13 +1,13 @@
 // possible directions of the snake
 enum Direction {
-    UP(false),
-    LEFT(true),
-    DOWN(false),
-    RIGHT(true);
+    UP((byte)1),
+    DOWN((byte)1),
+    LEFT((byte)2),
+    RIGHT((byte)2);
 
-    public final boolean loc; // line of action
+    public final byte loc; // line of action
 
-    private Direction(boolean loc) {
+    private Direction(byte loc) {
         this.loc = loc;
     }
 
