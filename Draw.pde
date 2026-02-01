@@ -44,8 +44,8 @@ void drawGame() {
     apples.draw(grid); // draw all apples
     snake.draw(grid); // draw snake into grid
     if (apples.amountApples() < apples.applesMax) { // if new apples needs to get spawned
-        apples.spawnApple(grid); // spawn apple
-        apples.draw(grid); // draw all apples (including the newly spawned)
+        if (apples.spawnApple(grid)) { apples.draw(grid); } // spawn apple and draw all apples again (if spawned successfully)
+        else { println("No apple could be spawned!"); } // if no apple could be spawned
     }
     apples.draw(grid); // draw apples into grid
     background(0, 0, 0); // overdraw everthing old with black background

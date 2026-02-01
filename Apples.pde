@@ -24,7 +24,7 @@ class Apples {
     }
 
     // spawn a new apple
-    public void spawnApple(Grid grid) {
+    public boolean spawnApple(Grid grid) {
         // INFO: requires everything (including itself) to be already drawn; must get drawn again to take visual effect
         // find free fields in grid
         ArrayList<Coord> free_coords = new ArrayList<Coord>(); // list of all free coords
@@ -35,7 +35,9 @@ class Apples {
                 }
             }
         }
+        if (free_coords.size() == 0) { return false; } // if there is no free cell, spawn no apple
         apples.add(free_coords.get(int(random(free_coords.size())))); // add ramdon chosen coord as apple
+        return true;
     }
 
     // delete apple

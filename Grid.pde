@@ -1,30 +1,20 @@
 // central management of game board
 class Grid {
+    // WARN: call reset() before set(Coord coord, color c) or draw() if size changed, else index errors may occur
     // grid parameters
     public int width;
     public int height;
     public int diameter;
     public color backgroundColor = color(0, 0, 0);
     // grid cells
-    public color[][] cells = new color[width][height];
+    public color[][] cells;
 
-    // initializes grid
-    public Grid() {
-        // set all cells to black
+    // sets size and background of all cells
+    public void reset() {
+        cells = new color[width][height];
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 cells[x][y] = backgroundColor;
-            }
-        }
-    }
-
-    // draws all cells into the windows
-    public void draw() {
-        for (int x = 0; x < width; x++) {
-            for (int y = 0; y < height; y++) {
-                stroke(255);
-                fill(cells[x][y]);
-                rect(x*diameter, y*diameter, diameter, diameter);
             }
         }
     }
@@ -36,11 +26,13 @@ class Grid {
         return true;
     }
 
-    // resets all cells to background
-    public void reset() {
+    // draws all cells into the windows
+    public void draw() {
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
-                cells[x][y] = backgroundColor;
+                stroke(255);
+                fill(cells[x][y]);
+                rect(x*diameter, y*diameter, diameter, diameter);
             }
         }
     }
