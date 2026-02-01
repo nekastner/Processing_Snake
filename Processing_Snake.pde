@@ -1,10 +1,11 @@
-// configs
+// setting
 final int horizontal_fields = 17;
 final int vertical_fields = 15;
 final int fields_diameter = 30;
 final int frame_time = 120;
 
 // frame time variables
+// WARN: do not change!
 int frame_clk = 0;
 Boolean frame_input_given = false;
 

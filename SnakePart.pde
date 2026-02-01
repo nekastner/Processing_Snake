@@ -1,11 +1,7 @@
-/* part of the snake
- * acting as bi-directional linked list with multiple entry points
- * (every element is an entry point to the whole snake)
- */
+// coord and previous and next part of one snake part
 class SnakePart {
-
+    // INFO: acting as bi-directional linked list (every element is a valid entry-point to the whole snake)
     Coord coord; // postition of this part only
-
     SnakePart next; // neighboured part in direction tail
     SnakePart previous; // neighboured part in direction head
 

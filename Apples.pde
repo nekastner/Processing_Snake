@@ -1,4 +1,4 @@
-// spawned and manages the apples
+// spawn and manage apples
 class Apples {
 
     // settings
@@ -24,14 +24,18 @@ class Apples {
     }
 
     // spawn a new apple
-    public void spawnApple() {
-        // TODO: check if field is free (no snake, no apples)
-        apples.add(
-            new Coord(
-                (int) random(0, this.gridWidth),
-                (int) random(0, this.gridHeight)
-            )
-        );
+    public void spawnApple(Grid grid) {
+        // INFO: requires everything (including itself) to be already drawn; must get drawn again to take visual effect
+        // find free fields in grid
+        ArrayList<Coord> free_coords = new ArrayList<Coord>(); // list of all free coords
+        for (int x = 0; x < grid.width; x++) { // for each x in grid
+            for (int y = 0; y < grid.height; y++) { // for each y in grid
+                if (grid.cells[x][y] == grid.backgroundColor) { // if cell is empty
+                    free_coords.add(new Coord(x, y)); // save coord
+                }
+            }
+        }
+        apples.add(free_coords.get(int(random(free_coords.size())))); // add ramdon chosen coord as apple
     }
 
     // delete apple

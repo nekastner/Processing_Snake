@@ -1,4 +1,4 @@
-// possible directions of the snake
+// all possible directions of snakes (with some utils)
 enum Direction {
     UP((byte)1),
     DOWN((byte)1),
@@ -7,11 +7,12 @@ enum Direction {
 
     public final byte loc; // line of action
 
+    // auto-sets loc on use of Direction
     private Direction(byte loc) {
         this.loc = loc;
     }
 
-    // checks whether another direction has the same line of action, the orientation is irrelevant
+    // checks whether another direction has the same loc, the orientation is irrelevant (both would be invalid for the game)
     public boolean isSameLoc(Direction otherDirection) {
         return this.loc == otherDirection.loc;
     }
