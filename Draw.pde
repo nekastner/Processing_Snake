@@ -23,6 +23,7 @@ void drawText(String text) {
     fill(255);
     textSize(16);
     text(text, 50, 50);
+    text("Press ESC to quit.", 50, 100);
 }
 
 void drawGame() {
