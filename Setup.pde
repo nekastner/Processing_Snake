@@ -15,5 +15,5 @@ void setup() {
 void settings() {
     // INFO: size() with parameters only possible in settings(), not setup()
     // setup window
-    size(horizontal_fields*fields_diameter+2, vertical_fields*fields_diameter+2); // +2, else borders of cells out of window
+    size(horizontal_fields*fields_diameter+1, vertical_fields*fields_diameter+1); // +1, else borders of cells out of window
 }
