@@ -4,24 +4,25 @@ void draw() {
     {
         // moved each draw scenario into own function for advanced readability
         case STARTMENU:
-            drawStartMenu();
+            drawText("Welcome. Press SPACE to start...");
             break;
         case INGAME:
             drawGame();
             break;
         case PAUSEMENU:
-            drawPauseMenu();
+            drawText("Game paused. Press SPACE to continue...");
             break;
         case GAMEOVER:
-            drawgameOverScreen();
+            drawText("Game over! Press SPACE to restart...");
             break;
     }
 }
 
-void drawStartMenu() {
+void drawText(String text) {
     background(0, 0, 0);
     fill(255);
-    text("Welcome. Press SPACE to start...", 50, 50);
+    textSize(16);
+    text(text, 50, 50);
 }
 
 void drawGame() {
@@ -50,16 +51,4 @@ void drawGame() {
     apples.draw(grid); // draw apples into grid
     background(0, 0, 0); // overdraw everthing old with black background
     grid.draw(); // draw grid into window
-}
-
-void drawPauseMenu() {
-    background(0, 0, 0);
-    fill(255);
-    text("Game paused. Press SPACE to continue...", 50, 50);
-}
-
-void drawgameOverScreen() {
-    background(0, 0, 0);
-    fill(255);
-    text("Game over!Press SPACE to restart...", 50, 50);
 }
