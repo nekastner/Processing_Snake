@@ -2,9 +2,6 @@
 class Grid {
     // WARN: call reset() before set(Coord coord, color c) or draw() if size changed, else index errors may occur
     // grid parameters
-    public int width;
-    public int height;
-    public int diameter;
     public color backgroundColor = color(0, 0, 0);
     // grid cells
     public color[][] cells;
@@ -32,7 +29,7 @@ class Grid {
             for (int y = 0; y < height; y++) {
                 stroke(255);
                 fill(cells[x][y]);
-                rect(x*diameter, y*diameter, diameter, diameter);
+                rect(x*fields_diameter, info_bar_height+y*fields_diameter, fields_diameter, fields_diameter);
             }
         }
     }

@@ -98,10 +98,10 @@ class Snake {
     }
 
     // checks whether the snake head left the grid or crashed into itself
-    public Boolean lost(Grid grid) {
+    public Boolean lost() {
         // check whether snake head left grid
-        if (head.coord.x < 0 || head.coord.x >= grid.width ||
-            head.coord.y < 0 || head.coord.y >= grid.height) {
+        if (head.coord.x < 0 || head.coord.x >= fields.x ||
+            head.coord.y < 0 || head.coord.y >= fields.y) {
             return true;
         }
         // check whether snake head is over other nsake part

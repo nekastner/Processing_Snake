@@ -1,8 +1,12 @@
 // setting
-final int horizontal_fields = 17;
-final int vertical_fields = 15;
+final int info_bar_height = 100;
+final Coord fields = new Coord(17, 15);
 final int fields_diameter = 30;
 final int frame_time = 120;
+
+// resulting
+// WARN: do not change!
+final Coord game_size = new Coord(fields.x*fields_diameter, info_bar_height+fields.y*fields_diameter);
 
 // frame time variables
 // WARN: do not change!

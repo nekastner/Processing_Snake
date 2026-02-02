@@ -4,37 +4,40 @@ void draw() {
     {
         // moved each draw scenario into own function for advanced readability
         case STARTMENU:
-            drawText("Welcome. Press SPACE to start...");
+            draw_info_bar("Welcome. Start: SPACE | Press ESC to quit.");
             break;
         case INGAME:
-            drawGame();
+            draw_game();
             break;
         case PAUSEMENU:
-            drawText("Game paused. Press SPACE to continue...");
+            draw_info_bar("Game paused. | Continue: SPACE | Press ESC to quit.");
             break;
         case GAMEOVER:
-            drawText("Game over! Press SPACE to restart...");
+            draw_info_bar("Game over! Restart: SPACE | Press ESC to quit.");
+            grid.draw(); // does not run any further, just displays state
             break;
     }
 }
 
-void drawText(String text) {
+void draw_info_bar(String text) {
     background(0, 0, 0);
+    stroke(255);
+    fill(50);
+    rect(0, 0, game_size.x, info_bar_height);
     fill(255);
     textSize(16);
-    text(text, 50, 50);
-    text("Press ESC to quit.", 50, 100);
+    text(text, 0, info_bar_height/2);
 }
 
-void drawGame() {
+void draw_game() {
     // frame management
-    if (millis() - frame_clk < frame_time) { return; } // skip drawGame if the time for the next frame has not come yet
+    if (millis() - frame_clk < frame_time) { return; } // skip draw_game() if the time for the next frame has not come yet
     frame_clk = millis(); // set time clock to now
     frame_input_given = false; // unlock movement controls
     // game logic
     grid.reset(); // reset grid
     snake.move(); // move snake
-    if (snake.lost(grid)) { game_state = GameState.GAMEOVER; } // check for game over
+    if (snake.lost()) { game_state = GameState.GAMEOVER; } // check for game over
     for (Coord apple : apples.apples) { // for all apples
         if (snake.head.coord.x == apple.x &&
             snake.head.coord.y == apple.y) { // if snake head is on an apple
@@ -51,5 +54,6 @@ void drawGame() {
     }
     apples.draw(grid); // draw apples into grid
     background(0, 0, 0); // overdraw everthing old with black background
+    draw_info_bar(String.format("Pause: SPACE | Quit: ESC | Score: %d", snake.length())); // draw info bar
     grid.draw(); // draw grid into window
 }
