@@ -1,5 +1,5 @@
 // setting
-final int info_bar_height = 100;
+final int info_bar_height = 50;
 final Coord fields = new Coord(17, 15);
 final int fields_diameter = 30;
 final int frame_time = 120;

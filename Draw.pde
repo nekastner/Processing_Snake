@@ -25,8 +25,8 @@ void draw_info_bar(String text) {
     fill(50);
     rect(0, 0, game_size.x, info_bar_height);
     fill(255);
-    textSize(16);
-    text(text, 0, info_bar_height/2);
+    textSize(info_bar_height/2);
+    text(text, info_bar_height/4, info_bar_height*2/3);
 }
 
 void draw_game() {
