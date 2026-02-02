@@ -30,25 +30,25 @@ Minimum requirements:
 
 Optional requirements:
 - [ ] Selectable snake color
-- [ ] Close game over start screen
-- [ ] Score display
+- [x] Option to close game on start screen
+- [x] Score display
 - [ ] Highscore display
 - [ ] Player name input
 
 ### Head-up-Display
 
 Minimum requirements:
-- [ ] Current score
+- [x] Current score
 
 Optional requirements:
 - [ ] Timer
 - [ ] Highscore
-- [ ] Key hint for pause menu
+- [x] Key hint for pause menu
 
 ## Non-functional requirements
 
 ### Performance
-- [ ] the snake moves in intervals (ca. 120 ms)
+- [x] the snake moves in intervals (ca. 120 ms)
 
 ### User experience
 
