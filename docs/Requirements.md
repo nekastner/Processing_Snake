@@ -48,7 +48,7 @@ Optional requirements:
 ## Non-functional requirements
 
 ### Performance
-- [ ] the snkae moves in intervals (ca. 120 ms)
+- [ ] the snake moves in intervals (ca. 120 ms)
 
 ### User experience
 
