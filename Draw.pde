@@ -4,15 +4,18 @@ void draw() {
     {
         // moved each draw scenario into own function for advanced readability
         case STARTMENU:
+            background(0, 0, 0);
             draw_info_bar("Welcome. Start: SPACE | Press ESC to quit.");
             break;
         case INGAME:
             draw_game();
             break;
         case PAUSEMENU:
+            background(0, 0, 0);
             draw_info_bar("Game paused. | Continue: SPACE | Press ESC to quit.");
             break;
         case GAMEOVER:
+            background(0, 0, 0);
             draw_info_bar("Game over! Restart: SPACE | Press ESC to quit.");
             grid.draw(); // does not run any further, just displays state
             break;
@@ -20,7 +23,6 @@ void draw() {
 }
 
 void draw_info_bar(String text) {
-    background(0, 0, 0);
     stroke(255);
     fill(50);
     rect(0, 0, game_size.x, info_bar_height);
@@ -54,6 +56,6 @@ void draw_game() {
     }
     apples.draw(grid); // draw apples into grid
     background(0, 0, 0); // overdraw everthing old with black background
-    draw_info_bar(String.format("Pause: SPACE | Quit: ESC | Score: %d", snake.length())); // draw info bar
     grid.draw(); // draw grid into window
+    draw_info_bar(String.format("Pause: SPACE | Quit: ESC | Score: %d", snake.length())); // draw info bar
 }
